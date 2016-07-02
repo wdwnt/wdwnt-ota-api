@@ -12,13 +12,13 @@ namespace wdwnt_ota_api.Modules
         {
             Get["/info"] = _ =>
             {
-                var nowEst = NowEst();
-                var suggestRadio = nowEst.DayOfWeek == DayOfWeek.Wednesday && (nowEst.Hour == 20 || nowEst.Hour == 21);
-
                 dynamic response = new ExpandoObject();
-                response.Ota_stream_url = "http://u.wdwnt.com/ListenOtA";
+                response.Ota_stream_url = "http://audio.wdwntunes.com:8290/stream";
                 response.Wbzw_stream_url = "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC";
-                response.Suggest_radio = suggestRadio;
+
+                var nowEst = NowEst();
+                response.Suggest_radio = nowEst.DayOfWeek == DayOfWeek.Wednesday &&
+                                         (nowEst.Hour == 20 || nowEst.Hour == 21);
 
                 try
                 {
@@ -32,7 +32,8 @@ namespace wdwnt_ota_api.Modules
                 }
                 catch (Exception e)
                 {
-                    response.Centova = new { Error = e.Message };
+                    response.Centova = null;
+                    response.Error = e.Message;
                 }
 
                 return Response.AsJson((object)response);

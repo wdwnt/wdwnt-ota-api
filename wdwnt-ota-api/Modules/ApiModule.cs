@@ -29,6 +29,7 @@ namespace wdwnt_ota_api.Modules
                                 "http://panel2.directhostingcenter.com:2199/rpc/wukcrjdg/streaminfo.get"));
 
                     response.Centova = centovaObject;
+                    response.Error = null;
                 }
                 catch (Exception e)
                 {

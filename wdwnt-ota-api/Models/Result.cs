@@ -12,12 +12,16 @@ namespace wdwnt_ota_api.Models
 
         [DataMember]
         public Centova Centova { get; set; }
+
         [DataMember(Name = "ota_stream_url")]
-        public string OtaStreamUrl { get; set; }
+        public string OtaStreamUrl => "http://23.95.25.17:8142/;";
+
         [DataMember(Name = "wbzw_stream_url")]
-        public string WbzwStreamUrl { get; set; }
+        public string WbzwStreamUrl => "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC";
+
         [DataMember(Name = "suggest_radio")]
         public bool SuggestRadio { get; set; }
+
         [DataMember]
         public string Error { get; set; }
     }

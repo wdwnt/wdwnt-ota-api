@@ -12,15 +12,11 @@ namespace wdwnt_ota_api.Modules
         {
             Get["/info"] = _ =>
             {
-                var response = new Result
-                {
-                    OtaStreamUrl = "http://23.95.25.17:8142/",
-                    WbzwStreamUrl = "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC"
-                };
+                var response = new Result();
 
                 var nowEst = NowEst();
                 response.SuggestRadio = nowEst.DayOfWeek == DayOfWeek.Wednesday &&
-                                         (nowEst.Hour == 20 || nowEst.Hour == 21);
+                                        (nowEst.Hour == 20 || nowEst.Hour == 21);
 
                 try
                 {
@@ -31,7 +27,7 @@ namespace wdwnt_ota_api.Modules
                                 "http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get"));
 
                     var track = centovaObject["data"][0]["track"];
-                    response.Centova.Album = (string) track["album"];
+                    response.Centova.Album = (string)track["album"];
                     response.Centova.Artist = (string)track["artist"];
                     response.Centova.Title = (string)track["title"];
 

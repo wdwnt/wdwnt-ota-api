@@ -2,7 +2,6 @@
 using System.Dynamic;
 using System.Net;
 using Nancy;
-using Newtonsoft.Json.Linq;
 
 namespace wdwnt_ota_api.Modules
 {
@@ -22,13 +21,8 @@ namespace wdwnt_ota_api.Modules
 
                 try
                 {
-                    var webClient = new WebClient();
-                    var centovaObject =
-                        JObject.Parse(
-                            webClient.DownloadString(
-                                "http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get"));
-
-                    response.Centova = centovaObject;
+                    response.Centova =
+                        new WebClient().DownloadString("http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get");
                     response.Error = null;
                 }
                 catch (Exception e)

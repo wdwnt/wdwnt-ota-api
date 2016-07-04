@@ -18,6 +18,7 @@ namespace wdwnt_ota_api.Models
         public string WbzwStreamUrl { get; set; }
         [DataMember(Name = "suggest_radio")]
         public bool SuggestRadio { get; set; }
+        [DataMember]
         public string Error { get; set; }
     }
 }

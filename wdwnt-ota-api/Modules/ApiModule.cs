@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Dynamic;
 using System.Net;
+using System.Text;
 using Nancy;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace wdwnt_ota_api.Modules
 {
@@ -21,8 +24,20 @@ namespace wdwnt_ota_api.Modules
 
                 try
                 {
-                    response.Centova =
-                        new WebClient().DownloadString("http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get");
+                    var webClient = new WebClient();
+                    var centovaObject =
+                        JObject.Parse(
+                            webClient.DownloadString(
+                                "http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get"));
+
+                    var track = centovaObject["data"][0]["track"];
+                    response.Centova = new
+                    {
+                        Album = track["album"],
+                        Artist = track["artist"],
+                        Title = track["title"]
+                    };
+
                     response.Error = null;
                 }
                 catch (Exception e)

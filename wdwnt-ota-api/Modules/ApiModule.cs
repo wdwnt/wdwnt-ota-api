@@ -13,7 +13,7 @@ namespace wdwnt_ota_api.Modules
             Get["/info"] = _ =>
             {
                 dynamic response = new ExpandoObject();
-                response.Ota_stream_url = "http://audio.wdwntunes.com:8290/stream";
+                response.Ota_stream_url = "http://23.95.25.17:8142/";
                 response.Wbzw_stream_url = "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC";
 
                 var nowEst = NowEst();
@@ -26,7 +26,7 @@ namespace wdwnt_ota_api.Modules
                     var centovaObject =
                         JObject.Parse(
                             webClient.DownloadString(
-                                "http://panel2.directhostingcenter.com:2199/rpc/wukcrjdg/streaminfo.get"));
+                                "http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get"));
 
                     response.Centova = centovaObject;
                     response.Error = null;

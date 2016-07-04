@@ -60,6 +60,7 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -91,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationStartup.cs" />
+    <Compile Include="Models\Centova.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Modules\ApiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

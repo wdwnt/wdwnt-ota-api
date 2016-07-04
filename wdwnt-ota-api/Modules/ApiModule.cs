@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Dynamic;
 using System.Net;
-using System.Text;
 using Nancy;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using wdwnt_ota_api.Models;
 
 namespace wdwnt_ota_api.Modules
 {
@@ -14,12 +12,14 @@ namespace wdwnt_ota_api.Modules
         {
             Get["/info"] = _ =>
             {
-                dynamic response = new ExpandoObject();
-                response.Ota_stream_url = "http://23.95.25.17:8142/";
-                response.Wbzw_stream_url = "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC";
+                var response = new Result
+                {
+                    OtaStreamUrl = "http://23.95.25.17:8142/",
+                    WbzwStreamUrl = "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC"
+                };
 
                 var nowEst = NowEst();
-                response.Suggest_radio = nowEst.DayOfWeek == DayOfWeek.Wednesday &&
+                response.SuggestRadio = nowEst.DayOfWeek == DayOfWeek.Wednesday &&
                                          (nowEst.Hour == 20 || nowEst.Hour == 21);
 
                 try
@@ -31,12 +31,9 @@ namespace wdwnt_ota_api.Modules
                                 "http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get"));
 
                     var track = centovaObject["data"][0]["track"];
-                    response.Centova = new
-                    {
-                        Album = track["album"],
-                        Artist = track["artist"],
-                        Title = track["title"]
-                    };
+                    response.Centova.Album = (string) track["album"];
+                    response.Centova.Artist = (string)track["artist"];
+                    response.Centova.Title = (string)track["title"];
 
                     response.Error = null;
                 }

@@ -15,7 +15,7 @@ namespace wdwnt_ota_api.Modules
                 var response = new Result();
 
                 var nowEst = NowEst();
-                response.SuggestRadio = nowEst.DayOfWeek == DayOfWeek.Wednesday &&
+                response.Suggest_radio = nowEst.DayOfWeek == DayOfWeek.Wednesday &&
                                         (nowEst.Hour == 20 || nowEst.Hour == 21);
 
                 try

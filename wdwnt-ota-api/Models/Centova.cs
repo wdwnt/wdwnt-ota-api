@@ -11,5 +11,8 @@ namespace wdwnt_ota_api.Models
         public string Artist { get; set; }
         [DataMember]
         public string Title { get; set; }
+
+        [DataMember]
+        public int Refresh_interval => 20;
     }
 }

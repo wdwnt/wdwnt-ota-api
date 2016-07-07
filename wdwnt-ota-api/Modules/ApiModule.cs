@@ -29,7 +29,7 @@ namespace wdwnt_ota_api.Modules
                     var track = centovaObject["data"][0]["track"];
                     if (((string) track["title"]).ToLower().Contains("streamtheworld"))
                     {
-                        response.Centova.Album = string.Empty;
+                        response.Centova.Album = "Tom Corless";
                         response.Centova.Artist = "WDWNT";
                         response.Centova.Title = "WDW News Tonight";
                     }

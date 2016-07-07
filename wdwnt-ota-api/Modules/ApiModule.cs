@@ -31,7 +31,10 @@ namespace wdwnt_ota_api.Modules
                     {
                         response.Centova.Album = "Tom Corless";
                         response.Centova.Artist = "WDWNT";
-                        response.Centova.Title = "WDW News Tonight";
+
+                        response.Centova.Title = nowEst.DayOfWeek == DayOfWeek.Wednesday
+                            ? "WDW News Tonight"
+                            : "A Special Show";
                     }
                     else
                     {

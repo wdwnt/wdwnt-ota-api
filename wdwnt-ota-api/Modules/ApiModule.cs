@@ -27,9 +27,17 @@ namespace wdwnt_ota_api.Modules
                                 "http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get"));
 
                     var track = centovaObject["data"][0]["track"];
-                    response.Centova.Album = (string)track["album"];
-                    response.Centova.Artist = (string)track["artist"];
-                    response.Centova.Title = (string)track["title"];
+                    if (((string) track["title"]).Contains("streamtheworld"))
+                    {
+                        response.Centova.Artist = "WDWNT";
+                        response.Centova.Title = "WDW News Tonight";
+                    }
+                    else
+                    {
+                        response.Centova.Album = (string)track["album"];
+                        response.Centova.Artist = (string)track["artist"];
+                        response.Centova.Title = (string)track["title"];
+                    }
 
                     response.Error = null;
                 }

@@ -34,7 +34,7 @@ namespace wdwnt_ota_api.Modules
 
                         response.Centova.Title = nowEst.DayOfWeek == DayOfWeek.Wednesday
                             ? "WDW News Tonight"
-                            : "WDWNT's 9th Anniversary Show!";
+                            : "A Special Show!";
                     }
                     else
                     {

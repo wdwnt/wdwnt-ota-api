@@ -24,7 +24,7 @@ namespace wdwnt_ota_api.Modules
                     var centovaObject =
                         JObject.Parse(
                             webClient.DownloadString(
-                                "http://23.95.25.17:2199/rpc/wdwntllc/streaminfo.get"));
+                                "http://panel2.directhostingcenter.com:2199/rpc/wukcrjdg/streaminfo.get"));
 
                     var track = centovaObject["data"][0]["track"];
                     if (((string) track["title"]).ToLower().Contains("streamtheworld"))

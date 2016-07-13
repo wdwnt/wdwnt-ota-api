@@ -14,7 +14,7 @@ namespace wdwnt_ota_api.Models
         public Centova Centova { get; set; }
 
         [DataMember]
-        public string Ota_stream_url => "http://23.95.25.17:8142/;";
+        public string Ota_stream_url => "http://50.7.96.210:8290/stream";
 
         [DataMember]
         public string Wbzw_stream_url => "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC";

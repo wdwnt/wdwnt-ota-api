@@ -38,7 +38,8 @@ namespace wdwnt_ota_api.Modules
                     }
                     else
                     {
-                        response.Centova.Album = (string)track["album"];
+                        response.Centova.Album = ((string) track["album"]).Replace(
+                            "German Top 50 Official Dance Charts", "Disney");
                         response.Centova.Artist = (string)track["artist"];
                         response.Centova.Title = (string)track["title"];
                     }

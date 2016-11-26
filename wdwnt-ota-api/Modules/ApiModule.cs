@@ -27,7 +27,15 @@ namespace wdwnt_ota_api.Modules
                                 "http://panel2.directhostingcenter.com:2199/rpc/wukcrjdg/streaminfo.get"));
 
                     var track = centovaObject["data"][0]["track"];
-                    if (((string) track["title"]).ToLower().Contains("streamtheworld"))
+
+                    if (!string.IsNullOrWhiteSpace(System.Configuration.ConfigurationManager.AppSettings["TitleOverride"]))
+                    {
+                        var appSettings = System.Configuration.ConfigurationManager.AppSettings;
+                        response.Centova.Album = appSettings["AlbumOverride"];
+                        response.Centova.Artist = appSettings["ArtistOverride"];
+                        response.Centova.Title = appSettings["TitleOverride"];
+                    }
+                    else if (((string) track["title"]).ToLower().Contains("streamtheworld"))
                     {
                         response.Centova.Album = "Tom Corless";
                         response.Centova.Artist = "WDWNT";

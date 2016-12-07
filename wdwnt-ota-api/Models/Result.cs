@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Configuration;
+using System.Runtime.Serialization;
 
 namespace wdwnt_ota_api.Models
 {
@@ -14,13 +15,13 @@ namespace wdwnt_ota_api.Models
         public Centova Centova { get; set; }
 
         [DataMember]
-        public string Ota_stream_url => "http://50.7.96.210:8290/stream";
+        public string Ota_stream_url => ConfigurationManager.AppSettings["OTAStreamUrl"];
 
         [DataMember]
-        public string Wbzw_stream_url => "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC";
+        public string Wbzw_stream_url => ConfigurationManager.AppSettings["WBZWStreamUrl"];
 
         [DataMember]
-        public string Radio_stream_url => "http://15383.live.streamtheworld.com:3690/WORLAMAAC_SC";
+        public string Radio_stream_url => ConfigurationManager.AppSettings["RadioStreamUrl"];
 
         [DataMember]
         public bool Suggest_radio { get; set; }

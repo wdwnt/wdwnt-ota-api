@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Configuration;
+using System.Runtime.Serialization;
 
 namespace wdwnt_ota_api.Models
 {
@@ -7,12 +8,14 @@ namespace wdwnt_ota_api.Models
     {
         [DataMember]
         public string Album { get; set; }
+
         [DataMember]
         public string Artist { get; set; }
+
         [DataMember]
         public string Title { get; set; }
 
         [DataMember]
-        public int Refresh_interval => 20;
+        public int Refresh_interval => int.Parse(ConfigurationManager.AppSettings["RefreshInterval"]);
     }
 }

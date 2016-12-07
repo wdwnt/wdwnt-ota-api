@@ -20,6 +20,9 @@ namespace wdwnt_ota_api.Models
         public string Wbzw_stream_url => "http://14033.live.streamtheworld.com:3690/WBZWAMAAC_SC";
 
         [DataMember]
+        public string Radio_stream_url => "http://15383.live.streamtheworld.com:3690/WORLAMAAC_SC";
+
+        [DataMember]
         public bool Suggest_radio { get; set; }
 
         [DataMember]

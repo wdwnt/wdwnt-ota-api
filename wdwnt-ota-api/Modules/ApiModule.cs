@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Configuration;
 using System.Net;
 using Nancy;
 using Newtonsoft.Json.Linq;
-using wdwnt_ota_api.Models;
+using WdwntOtaApi.Models;
 
 namespace wdwnt_ota_api.Modules
 {
@@ -12,7 +13,13 @@ namespace wdwnt_ota_api.Modules
         {
             Get["/info"] = _ =>
             {
-                var response = new Result();
+                var otaStreamUrl = ConfigurationManager.AppSettings["OTAStreamUrl"];
+                var response = new Result
+                {
+                    Ota_stream_url = !Request.Headers.UserAgent.Contains("Android") ?
+                                        $"{otaStreamUrl}.m3u" :
+                                        otaStreamUrl
+                };
 
                 var nowEst = NowEst();
                 response.Suggest_radio = nowEst.DayOfWeek == DayOfWeek.Wednesday &&

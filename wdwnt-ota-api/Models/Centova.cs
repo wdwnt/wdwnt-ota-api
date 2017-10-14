@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Runtime.Serialization;
 
-namespace wdwnt_ota_api.Models
+namespace WdwntOtaApi.Models
 {
     [DataContract]
     public class Centova

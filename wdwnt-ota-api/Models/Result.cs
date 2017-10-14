@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Runtime.Serialization;
 
-namespace wdwnt_ota_api.Models
+namespace WdwntOtaApi.Models
 {
     [DataContract]
     public class Result
@@ -15,7 +15,7 @@ namespace wdwnt_ota_api.Models
         public Centova Centova { get; set; }
 
         [DataMember]
-        public string Ota_stream_url => ConfigurationManager.AppSettings["OTAStreamUrl"];
+        public string Ota_stream_url { get; set; }
 
         [DataMember]
         public string Wbzw_stream_url => ConfigurationManager.AppSettings["WBZWStreamUrl"];

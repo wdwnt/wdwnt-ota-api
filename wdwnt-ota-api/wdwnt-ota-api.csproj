@@ -96,6 +96,7 @@
     <Compile Include="BusinessLogic\ICentovaDataRetriever.cs" />
     <Compile Include="BusinessLogic\DateTimeCalculator.cs" />
     <Compile Include="Models\Airtime.cs" />
+    <Compile Include="Models\BaseResult.cs" />
     <Compile Include="Models\BaseStreamInfo.cs" />
     <Compile Include="Models\Centova.cs" />
     <Compile Include="Models\ApiV2Result.cs" />

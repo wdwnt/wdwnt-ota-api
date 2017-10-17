@@ -3,7 +3,7 @@
 namespace WdwntOtaApi.Models
 {
     [DataContract]
-    public class Centova : BaseStreamInfo
-    {
+    public class Airtime : BaseStreamInfo
+    {        
     }
 }

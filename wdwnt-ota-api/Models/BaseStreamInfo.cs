@@ -1,0 +1,21 @@
+﻿using System.Configuration;
+using System.Runtime.Serialization;
+
+namespace WdwntOtaApi.Models
+{
+    [DataContract]
+    public class BaseStreamInfo
+    {
+        [DataMember]
+        public string Album { get; set; }
+
+        [DataMember]
+        public string Artist { get; set; }
+
+        [DataMember]
+        public string Title { get; set; }
+
+        [DataMember]
+        public int Refresh_interval => int.Parse(ConfigurationManager.AppSettings["RefreshInterval"]);
+    }
+}

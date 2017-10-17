@@ -6,20 +6,21 @@ using wdwnt_ota_api.BusinessLogic;
 
 namespace wdwnt_ota_api.Modules
 {
-    public class ApiModule : BaseApiModule
+    public class ApiV2Module : BaseApiModule
     {
         private readonly ICentovaDataRetriever centovaDataRetriever;
+        private readonly IAirtimeDataRetriever airtimeDataRetriever;
 
-        public ApiModule(ICentovaDataRetriever centovaDataRetriever) : base("v1")
+        public ApiV2Module(ICentovaDataRetriever centovaDataRetriever, IAirtimeDataRetriever airtimeDataRetriever) : base("v2")
         {
             this.centovaDataRetriever = centovaDataRetriever ?? throw new ArgumentNullException(nameof(centovaDataRetriever));
+            this.airtimeDataRetriever = airtimeDataRetriever ?? throw new ArgumentNullException(nameof(airtimeDataRetriever));
 
             Get["/info"] = _ =>
             {
-                var otaStreamUrl = ConfigurationManager.AppSettings["OTAStreamUrl"];
+                var otaStreamUrl = ConfigurationManager.AppSettings["AirtimeStreamUrl"];
                 var response = new Result
                 {
-                    Airtime = null,
                     Ota_stream_url = !Request.Headers.UserAgent.Contains("Android") ?
                                         $"{otaStreamUrl}.m3u" :
                                         otaStreamUrl
@@ -31,6 +32,7 @@ namespace wdwnt_ota_api.Modules
                 try
                 {
                     response.Centova = this.centovaDataRetriever.GetCentovaData();
+                    response.Airtime = this.airtimeDataRetriever.GetAirtimeData();
                 }
                 catch (Exception e)
                 {

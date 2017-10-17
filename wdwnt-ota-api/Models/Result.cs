@@ -9,11 +9,15 @@ namespace WdwntOtaApi.Models
         public Result()
         {
             Centova = new Centova();
+            Airtime = new Airtime();
         }
 
         [DataMember]
         public Centova Centova { get; set; }
 
+        [DataMember]
+        public Airtime Airtime { get; set; }
+        
         [DataMember]
         public string Ota_stream_url { get; set; }
 

@@ -19,7 +19,7 @@ namespace wdwnt_ota_api.Modules
             Get["/info"] = _ =>
             {
                 var otaStreamUrl = ConfigurationManager.AppSettings["AirtimeStreamUrl"];
-                var response = new Result
+                var response = new ApiV2Result
                 {
                     Ota_stream_url = !Request.Headers.UserAgent.Contains("Android") ?
                                         $"{otaStreamUrl}.m3u" :

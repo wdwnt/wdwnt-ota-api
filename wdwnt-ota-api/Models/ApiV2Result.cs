@@ -4,9 +4,9 @@ using System.Runtime.Serialization;
 namespace WdwntOtaApi.Models
 {
     [DataContract]
-    public class Result
+    public class ApiV2Result
     {
-        public Result()
+        public ApiV2Result()
         {
             Centova = new Centova();
             Airtime = new Airtime();

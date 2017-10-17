@@ -98,7 +98,8 @@
     <Compile Include="Models\Airtime.cs" />
     <Compile Include="Models\BaseStreamInfo.cs" />
     <Compile Include="Models\Centova.cs" />
-    <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\ApiV2Result.cs" />
+    <Compile Include="Models\ApiV1Result.cs" />
     <Compile Include="Modules\ApiV2Module.cs" />
     <Compile Include="Modules\ApiModule.cs" />
     <Compile Include="Modules\BaseApiModule.cs" />

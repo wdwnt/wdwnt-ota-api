@@ -26,8 +26,7 @@ namespace wdwnt_ota_api.Modules
                                         otaStreamUrl
                 };
 
-                response.Suggest_radio = DateTimeCalculator.NowEst.DayOfWeek == DayOfWeek.Wednesday &&
-                                        (DateTimeCalculator.NowEst.Hour == 21 || DateTimeCalculator.NowEst.Hour == 22);
+                response.Suggest_radio = false;
 
                 try
                 {

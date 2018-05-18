@@ -41,6 +41,9 @@ namespace wdwnt_ota_api.Modules
                 {
                     response.Centova = null;
                     response.Error = e.Message;
+                    var errorResponse = Response.AsJson((object)response);
+                    errorResponse.StatusCode = HttpStatusCode.InternalServerError;
+                    return errorResponse;
                 }
 
                 return Response.AsJson((object)response);

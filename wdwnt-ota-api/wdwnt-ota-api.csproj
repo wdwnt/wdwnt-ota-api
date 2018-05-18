@@ -95,6 +95,8 @@
     <Compile Include="BusinessLogic\IAirtimeDataRetriever.cs" />
     <Compile Include="BusinessLogic\ICentovaDataRetriever.cs" />
     <Compile Include="BusinessLogic\DateTimeCalculator.cs" />
+    <Compile Include="CachedResponse.cs" />
+    <Compile Include="CachingBootstrapper.cs" />
     <Compile Include="Models\Airtime.cs" />
     <Compile Include="Models\BaseResult.cs" />
     <Compile Include="Models\BaseStreamInfo.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Modules\ApiModule.cs" />
     <Compile Include="Modules\BaseApiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Extensions\ContextExtensions.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

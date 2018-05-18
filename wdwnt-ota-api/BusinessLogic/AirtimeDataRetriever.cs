@@ -16,7 +16,7 @@ namespace wdwnt_ota_api.BusinessLogic
             var airtimeObject =
                 JObject.Parse(
                     webClient.DownloadString(
-                        "https://wdwnt.airtime.pro/api/live-info"));
+                        "https://wdwnt.airtime.pro/api/live-info?type=interval&limit=5"));
 
             var track = airtimeObject["current"]["metadata"];
 

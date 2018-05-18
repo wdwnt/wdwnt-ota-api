@@ -28,7 +28,14 @@ namespace wdwnt_ota_api.Modules
 
                 try
                 {
-                    response.Centova = this.airtimeDataRetriever.GetAirtimeData();
+                    // shoehorn Airtime into Centova response
+                    var airtimeResponse = this.airtimeDataRetriever.GetAirtimeData();
+                    response.Centova = new Centova
+                    {
+                        Album = airtimeResponse.Album,
+                        Artist = airtimeResponse.Artist,
+                        Title = airtimeResponse.Title
+                    };
                 }
                 catch (Exception e)
                 {

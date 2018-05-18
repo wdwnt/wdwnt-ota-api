@@ -8,15 +8,15 @@ namespace wdwnt_ota_api.Modules
 {
     public class ApiModule : BaseApiModule
     {
-        private readonly ICentovaDataRetriever centovaDataRetriever;
+        private readonly IAirtimeDataRetriever airtimeDataRetriever;
 
-        public ApiModule(ICentovaDataRetriever centovaDataRetriever) : base("v1")
+        public ApiModule(IAirtimeDataRetriever airtimeDataRetriever) : base("v1")
         {
-            this.centovaDataRetriever = centovaDataRetriever ?? throw new ArgumentNullException(nameof(centovaDataRetriever));
+            this.airtimeDataRetriever = airtimeDataRetriever ?? throw new ArgumentNullException(nameof(airtimeDataRetriever));
 
             Get["/info"] = _ =>
             {
-                var otaStreamUrl = ConfigurationManager.AppSettings["OTAStreamUrl"];
+                var otaStreamUrl = ConfigurationManager.AppSettings["AirtimeStreamUrl"];
                 var response = new ApiV1Result
                 {
                     Ota_stream_url = !Request.Headers.UserAgent.Contains("Android") ?
@@ -28,7 +28,14 @@ namespace wdwnt_ota_api.Modules
 
                 try
                 {
-                    response.Centova = this.centovaDataRetriever.GetCentovaData();
+                    // shoehorn Airtime into Centova response
+                    var airtimeResponse = this.airtimeDataRetriever.GetAirtimeData();
+                    response.Centova = new Centova
+                    {
+                        Album = airtimeResponse.Album,
+                        Artist = airtimeResponse.Artist,
+                        Title = airtimeResponse.Title
+                    };
                 }
                 catch (Exception e)
                 {

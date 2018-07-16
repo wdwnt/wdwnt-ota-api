@@ -9,10 +9,12 @@ namespace wdwnt_ota_api.Modules
     public class ApiModule : BaseApiModule
     {
         private readonly IAirtimeDataRetriever airtimeDataRetriever;
+        private readonly IFastPassDataRetriever fastPassDataRetriever;
 
-        public ApiModule(IAirtimeDataRetriever airtimeDataRetriever) : base("v1")
+        public ApiModule(IAirtimeDataRetriever airtimeDataRetriever, IFastPassDataRetriever fastPassDataRetriever) : base("v1")
         {
             this.airtimeDataRetriever = airtimeDataRetriever ?? throw new ArgumentNullException(nameof(airtimeDataRetriever));
+            this.fastPassDataRetriever = fastPassDataRetriever ?? throw new ArgumentNullException(nameof(fastPassDataRetriever));
 
             Get["/info"] = _ =>
             {
@@ -28,13 +30,13 @@ namespace wdwnt_ota_api.Modules
 
                 try
                 {
-                    // shoehorn Airtime into Centova response
-                    var airtimeResponse = this.airtimeDataRetriever.GetAirtimeData();
+                    // shoehorn FastPass into Centova response
+                    var fastPassData = fastPassDataRetriever.GetFastPassData();
                     response.Centova = new Centova
                     {
-                        Album = airtimeResponse.Album,
-                        Artist = airtimeResponse.Artist,
-                        Title = airtimeResponse.Title
+                        Album = fastPassData.Album,
+                        Artist = fastPassData.Artist,
+                        Title = fastPassData.Title
                     };
                 }
                 catch (Exception e)
